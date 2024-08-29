@@ -153,8 +153,14 @@ typename BinaryTree<T>::Node* BinaryTree<T>::Delete(Node* node, const T& value)
 			delete node;
 			node = tmp;
 		}
-		// Case #3: 2 children
 		else if (node->right == nullptr)
+		{
+			Node* tmp = node->left;
+			delete node;
+			node = tmp;
+		}
+		// Case #3: 2 children
+		else
 		{
 			Node* temp = FindMinimum(node->right);
 			node->data = temp->data;
